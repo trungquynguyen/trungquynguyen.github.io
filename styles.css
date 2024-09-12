@@ -1,0 +1,417 @@
+@media (prefers-reduced-motion: no-preference) {
+    * {
+      scroll-behavior: smooth;
+    }
+}
+
+:root {
+    --white: #FAF9F6;
+    --red: #BA2121;
+    --unfocused: #8D8D8D;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    scrollbar-width: thin;
+    scrollbar-color: #383838 #000000;
+}
+
+
+
+* {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    color: var(--white);
+
+}
+
+body {
+    background-color: black;
+    padding: 0 0 50px 0;
+    overflow-x: hidden;
+}
+
+/*body::before {
+    content: "";
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 30%;
+    filter: url(#grainy);
+    background: #000;
+}*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    right: 0;
+    position: fixed;
+    width: 100vw;
+    background-image: linear-gradient(black 5%, transparent 85%);
+    z-index: 1;
+    padding: 10px 40px 0 0;
+    height: 20vh;
+    scroll-snap-align: center;
+
+}
+
+header.index {
+    display: flex;
+    justify-content: right;
+    top: 0;
+    right: 0;
+}
+
+header > a {
+    font-size: 50px;
+    font-weight: 1000;
+    font-family: "Oswald", sans-serif;
+
+}
+
+header > a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+main {
+    padding: 45vh 0 20vh 15vw;
+    display: flex;
+    flex-direction: column;
+    height: 100vw;
+}
+
+p.nopadding {
+    margin: 0;
+    padding: 0;
+    width: 25vw;
+}
+
+p.about {
+    font-size: 13px;
+}
+
+#p1 {
+    margin-left: 62px;
+}
+
+#p2 {
+    margin-left: -5px;
+}
+
+#p3 {
+    margin-left: 80px;
+}
+
+#p4 {
+    margin-left: 15px;
+}
+
+a, p.nopadding > a > span {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 18px;
+}
+
+p.nopadding > a:hover {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 18px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 500;
+}
+
+footer {
+    font-weight: 500;
+    margin: 0;
+    padding: 10vh 10vw 0 5vw;
+    height: 80vh;
+    scroll-snap-align: center;
+}
+
+.italic {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 500;
+}
+
+h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+}
+
+h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 30px;
+}
+
+section {
+    margin: 0;
+    padding: 0;
+}
+
+#about {
+    margin: 0 0 8vh 0;
+}
+
+
+.scroller {
+    font-size: 13px;
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    width: 23vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px 0 12px 0;
+
+    mask-image: linear-gradient(transparent 0%, black 30%, black 70%, transparent 100%);
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+
+
+.scroller > a, span {
+    font-size: 15px;
+    scroll-snap-align: center;
+}
+
+.scroller > a:hover, .scroller > span:hover {
+    font-size: 15px;
+    scroll-snap-align: center;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.sub {
+    padding: 40px 0 0 0;
+}
+
+.sub:nth-child(1) {
+    padding-left: 2vw;
+}
+
+.sub > a {
+    font-size: 13px;
+}
+
+
+
+.grainy-radient {
+    width: 1000px;
+    height: 1000px;
+
+    z-index: -2;
+    position: absolute;
+    transition: filter 1.5s;
+    filter: contrast(70%) brightness(800%) invert(100%);
+}
+
+#grainy-radient-1 {
+    left: 55vw;
+    top: 80vh;
+    background:
+	radial-gradient(circle at 50% 50%, #000000, rgba(0,0,0,0)),
+	url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5.87' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+#grainy-radient-2 {
+    left: 55vw;
+    top: -40vh;
+    background:
+	radial-gradient(circle at 50% 50%, #0B8181, rgba(0,0,0,0)),
+	url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5.87' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+#grainy-radient-3 {
+    left: -50vw;
+    top: -75vh;
+    background:
+	radial-gradient(circle at 50% 50%, #C56E00, rgba(0,0,0,0)),
+	url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5.87' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+#grainy-radient-4 {
+    left: -60vw;
+    top: 50vh;
+    background:
+	radial-gradient(circle at 50% 50%, #07086D, rgba(0,0,0,0)),
+	url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5.87' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+#p1:hover ~ #grainy-radient-1 {
+    z-index: -1;
+    filter: contrast(150%) brightness(800%) invert(100%);
+}
+
+#p2:hover ~ #grainy-radient-2 {
+    z-index: -1;
+    filter: contrast(150%) brightness(800%) invert(100%);
+}
+
+#p3:hover ~ #grainy-radient-3 {
+    z-index: -1;
+    filter: contrast(150%) brightness(800%) invert(100%);
+}
+
+#p4:hover ~ #grainy-radient-4 {
+    z-index: -1;
+    filter: contrast(150%) brightness(800%) invert(100%);
+}
+
+/* for sub page */
+
+main.designer {
+    margin: 0 auto;
+    padding: 17vh 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 50vw;
+    height: 80vh;
+    scrollbar-width: none;
+}
+
+div.nopadding.sub > a:hover {
+    text-decoration: none;
+    color: var(--white);
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 500;
+}
+
+div.current > a {
+    text-decoration: none;
+    color: var(--white);
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.img-scroller {
+    width: 46vw;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    padding: 0 3vw;
+    mask-image: linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%);
+}
+
+.formated {
+    max-width: 38vw;
+    max-height: 38vh;
+    object-fit: cover;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0 1vw;
+    scroll-snap-align: center;
+    width: 100%;
+    height: auto;
+}
+
+div.designer {
+    margin: 0 auto;
+    width: 50vw;
+    padding: 5vh 2vw 0 2vw;
+    scroll-snap-align: center;
+}
+
+
+
+h4 {
+    padding: 10px 5px 3px 10px;
+
+    font-family: "Oswald", sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.designer > p {
+    font-size: 10px;
+    color: var(--unfocused);
+    transition: color 0.7s;
+}
+
+.designer > p:hover {
+    color: var(--white);
+}
+
+#dot-slider {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#dot-slider::after {
+    height: 10vh;
+    content: "";
+}
+
+div.dot {
+    background-color: var(--unfocused);
+    border-radius: 2px;
+    width: 4px;
+    height: 4px;
+    margin: 0 2px;
+    transition: color 0.5s, width 0.5s, height 0.5s, border-radius 0.5s;
+}
+
+i.arrow {
+    font-size: 60px;
+    position: absolute;
+    color: var(--unfocused);
+    transition: color 0.5s;
+}
+
+i.arrow.bi-chevron-compact-left {
+    top: 45vh;
+    left: 0;
+}
+
+i.arrow.bi-chevron-compact-right {
+    top: 45vh;
+    right: 0;
+}
+
+i.arrow:hover {
+    color: var(--white);
+
+}
+
+main.photos {
+    margin: 0 auto;
+    padding: 17vh 0 0 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    width: 50vw;
+    height: 80vh;
+}
+/*very buggy*/
+img.formated-photos {
+    width: 90%;
+    padding: 0 5%;
+    object-fit: scale-down;
+    scroll-snap-align: center;
+    margin-top: 10vh;
+
+}
