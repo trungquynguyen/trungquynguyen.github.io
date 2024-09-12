@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link href="styles.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Dokdo&family=Foldit:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Permanent+Marker&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,300;1,300&family=Rubik+Scribble&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Dokdo&family=Foldit:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Permanent+Marker&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,300;1,300&family=Rubik+Scribble&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Webpage</title>
+    </head>
+    <body>
+        <header>
+            <div class="nopadding sub"><a href="#about">About Me</a></div>
+            <div class="nopadding sub"><a href="designer.html">Graphic-designer-core</a></div>
+            <div class="nopadding sub"><a href="music.html">Music-blogger-core</a></div>
+            <div class="nopadding sub current"><a href="photos.html">Photos Collections</a></div>
+            <a href="index.html">TRUNG</a>
+        </header>
+
+        <main class="photos">
+        </main>
+
+        <i class="bi bi-chevron-compact-left arrow"></i>
+        <i class="bi bi-chevron-compact-right arrow"></i>
+
+        <section id="dot-slider">
+        </section>
+
+        <footer>
+            <section id="about">
+                <h2>ABOUT ME</h2>
+                <p class="about">Hi, I'm Trung Nguyen, currently a student at HUST, Vietnam</p>
+                <p class="about">I am a student doing student-things i find interesting. I try to think of myself and my works as adventurous and pretentiously artsy.</p>
+            </section>
+            <section id="links">
+                <h3>CONNECT WITH ME</h3>
+                <div class="scroller">
+                    <a href="">Facebook</a>
+                    <a href="">Instagram</a>
+                    <a href="">Threads</a>
+                    <a href="">GitHub</a>
+                    <a href="">LinkedIn</a>
+                    <a href="">Blog</a>
+                    <span>quytrung2406@gmail.com</span>
+                    </div>
+                </section>
+            </footer>
+        <script>
+            const scroller = document.querySelector("div.scroller");
+
+            scroller.addEventListener("wheel", (event) => {
+                event.preventDefault();
+                let speed = event.deltaY / 4;
+                scroller.scrollTop += speed;
+            });
+            //dynamically displaying projects
+            //update: try to access files from asset folder but failed bc this is running in a browser?
+            //instead, list the name of files and make paths
+            var mainPhotos = document.querySelector("main.photos");
+            var dotSlider = document.querySelector("#dot-slider");
+            const photos = ['1', '2', '3', '4', '5', '6', '7', '8']
+
+            function getImages() {
+                let imgHTML = '';
+                for (const file of photos) {
+                    let filepath = "photos/" + file + ".jpg";
+                    imgHTML += `<img class="formated-photos" src="${filepath}" alt="quy">`;
+                }
+                return imgHTML;
+            };
+
+            mainPhotos.innerHTML += getImages();
+            for (let i = 0; i < photos.length; i++) {
+                dotSlider.innerHTML += `
+                <div class="dot" id=${"dot" + i}></div>
+                `
+            };
+
+
+            const width = mainPhotos.getBoundingClientRect()["width"];
+
+            var dots = document.querySelectorAll("div.dot");
+            const leftArrow = document.querySelector("i.bi-chevron-compact-left");
+            const rightArrow = document.querySelector("i.bi-chevron-compact-right");
+            const imgs = document.querySelectorAll("img.formated-photos")
+
+            //works but so buggy tho
+            function lightUp() {
+                for (let i = 0; i < dots.length; i++) {
+
+                    let minScroll = 0;
+                    let maxScroll = 0;
+                    for (let j = 0; j < i; j++) {
+                        minScroll += imgs[j].getBoundingClientRect()["width"];
+                    }
+                    maxScroll = minScroll + imgs[i].getBoundingClientRect()["width"]/2;
+                    if (minScroll - imgs[i].getBoundingClientRect()["width"]/2 <= mainPhotos.scrollLeft && mainPhotos.scrollLeft < maxScroll) {
+                        dots[i].style.backgroundColor = "var(--white)";
+                        dots[i].style.width = "6px";
+                        dots[i].style.height = "6px";
+                        dots[i].style.borderRadius = "3px";
+                    } else {
+                        dots[i].style.backgroundColor = "var(--unfocused)";
+                        dots[i].style.width = "4px";
+                        dots[i].style.height = "4px";
+                        dots[i].style.borderRadius = "2px";
+                    }
+                };
+            };
+
+            lightUp();
+
+            leftArrow.addEventListener("click", (event) => {
+                event.preventDefault();
+                mainPhotos.scrollLeft -= width/1.5;
+            });
+
+            rightArrow.addEventListener("click", (event) => {
+                event.preventDefault();
+                mainPhotos.scrollLeft += width/1.5;
+            });
+
+            mainPhotos.addEventListener("scroll", lightUp);
+        </script>
+    </body>
+</html>
