@@ -81,7 +81,7 @@
             };
 
 
-            const width = mainPhotos.getBoundingClientRect()["width"];
+            var width = mainPhotos.getBoundingClientRect()["width"];
 
             var dots = document.querySelectorAll("div.dot");
             const leftArrow = document.querySelector("i.bi-chevron-compact-left");
@@ -89,7 +89,7 @@
             const imgs = document.querySelectorAll("img.formated-photos")
 
             //works but so buggy tho
-            function lightUp() {
+            /*function lightUp() {
                 for (let i = 0; i < dots.length; i++) {
 
                     let minScroll = 0;
@@ -98,6 +98,8 @@
                         minScroll += imgs[j].getBoundingClientRect()["width"];
                     }
                     maxScroll = minScroll + imgs[i].getBoundingClientRect()["width"]/2;
+                    
+                    
                     if (minScroll - imgs[i].getBoundingClientRect()["width"]/2 <= mainPhotos.scrollLeft && mainPhotos.scrollLeft < maxScroll) {
                         dots[i].style.backgroundColor = "var(--white)";
                         dots[i].style.width = "6px";
@@ -110,21 +112,67 @@
                         dots[i].style.borderRadius = "2px";
                     }
                 };
-            };
+            }; */
 
-            lightUp();
+            function inactiveFy(dot) {
+                dot.style.backgroundColor = "var(--unfocused)";
+                dot.style.width = "4px";
+                dot.style.height = "4px";
+                dot.style.borderRadius = "2px";
+                return dot
+            }
+
+            function activeFy(dot) {
+                dot.style.backgroundColor = "var(--white)";
+                dot.style.width = "6px";
+                dot.style.height = "6px";
+                dot.style.borderRadius = "3px";
+                return dot
+            }
+
+            var timeOut = 1;
 
             leftArrow.addEventListener("click", (event) => {
-                event.preventDefault();
-                mainPhotos.scrollLeft -= width/1.5;
-            });
+                if (timeOut) {clearTimeout(timeOut);}
+                timeOut = setTimeout(() => {
+                    width = mainPhotos.getBoundingClientRect()["width"];
+                    event.preventDefault();
+                    mainPhotos.scrollLeft -= width/1.5;
+                    for (let i = dots.length - 1; i >= 0; i--) {
+                        if (dots[i].style.backgroundColor == "var(--white)" && i != 0) {
+                            inactiveFy(dots[i]);
+                            activeFy(dots[i-1]);
+                            break;
+                        }
+                    }
+                }, 200);
+            })
 
             rightArrow.addEventListener("click", (event) => {
-                event.preventDefault();
-                mainPhotos.scrollLeft += width/1.5;
+                if (timeOut) {clearTimeout(timeOut);}
+                timeOut = setTimeout(() => {
+                    width = mainPhotos.getBoundingClientRect()["width"];
+                    event.preventDefault();
+                    mainPhotos.scrollLeft += width/1.5;
+                    for (let i = 0; i < dots.length; i++) {
+                        if (dots[i].style.backgroundColor == "var(--white)" && i != (dots.length - 1)) {
+                            inactiveFy(dots[i]);
+                            activeFy(dots[i+1]);
+                            break;
+                        }
+                    }
+                }, 200);
+                
+                
+                
             });
 
-            mainPhotos.addEventListener("scroll", lightUp);
+
+            window.addEventListener("load", (event) => {
+                dots.forEach((dot) => inactiveFy(dot));
+                activeFy(dots[0])
+            })
+            
         </script>
     </body>
 </html>
