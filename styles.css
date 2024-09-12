@@ -89,7 +89,7 @@ main {
 p.nopadding {
     margin: 0;
     padding: 0;
-    width: 25vw;
+    min-width: 200px;
 }
 
 p.about {
@@ -129,9 +129,10 @@ p.nopadding > a:hover {
 
 footer {
     font-weight: 500;
-    margin: 0;
-    padding: 10vh 10vw 0 5vw;
+    margin-top: 10rem;
+    padding: 0 10vw 0 5vw;
     height: 80vh;
+    min-width: 500px;
     scroll-snap-align: center;
 }
 
