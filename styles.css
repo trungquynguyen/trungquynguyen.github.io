@@ -212,8 +212,8 @@ section {
 
 
 .grainy-radient {
-    width: 1000px;
-    height: 1000px;
+    width: 70rem;
+    height: 70rem;
 
     z-index: -2;
     position: absolute;
