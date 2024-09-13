@@ -64,26 +64,32 @@
             var dotSlider = document.querySelector("#dot-slider");
             const projects = [
                 {
-                    "title": "3d experimenting",
-                    "description": "Nullam auctor a ante nec accumsan. Cras id sapien consequat purus aliquam sagittis. Sed sodales sem non enim viverra, id vestibulum leo finibus. Praesent gravida mauris eu leo pretium, viverra tempor enim varius. Maecenas id accumsan diam.",
+                    "title": "GIAO",
+                    "description": "Giao là một dự án cá nhân web app với Flask dành cho gia(o việc) đình. Các thành viên giao và nhận việc nhà vào thời gian biểu. Qua dự án, học được cách kết nối front và back end, xây dựng database, sử dụng thư viện SQLAlchemy (tài liệu 'khó chệu vô cùng'), framework CSS tailwind, thiết kế logo với Inkscape, mài rũa kĩ năng JavaScript. Hiện vẫn trong quá trình xây dựng nên em chưa có link publish gì ạ hihi.",
+                    "images": ["1.jpg", "2.jpg", "3.PNG", "4.jpg"],
+                    "id": 1
+                },
+                {
+                    "title": "thể nghiệm",
+                    "description": "Thử sử dụng blender.",
                     "images": ["1.jpg", "2.jpg", "3.PNG", "4.jpg"],
                     "id": 1
                 },
                 {
                     "title": "đến hẹn lại lên",
-                    "description": "Cras id sapien consequat purus aliquam sagittis. Sed sodales sem non enim viverra, id vestibulum leo finibus. Praesent gravida mauris eu leo pretium, viverra tempor enim varius. Proin in cursus mauris.",
+                    "description": "Trưởng ban Thiết kế/Truyền thông. Tạo dựng hình ảnh thương hiệu kết hợp giữa truyền thống và hiện đại, thu hút hơn 100 người xem cho các buổi diễn trực tiếp hàng tuần. Thiết kế và chụp 60% tất cả các ấn phẩm truyền thông. Tổ chức các cuộc họp hàng tuần của bộ phận.",
                     "images": ["1.jpg", "2.png", "3.jpg"],
                     "id": 2
                 },
                 {
                     "title": "hinges",
-                    "description": "Maecenas id accumsan diam.",
+                    "description": "Trưởng ban Thiết kế. Hướng dẫn các thành viên khác theo bộ nhận diện tối giản nhất quán, tăng mức độ tương tác trên Facebook. Dẫn dắt các cuộc thảo luận, hợp tác với các thành viên khác. Thiết kế ~30% các hình ảnh truyền thông xã hội.",
                     "images": ["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
                     "id": 3
                 },
                 {
-                    "title": "lulia",
-                    "description": "Viverra. Maecenas id accumsan diam.",
+                    "title": "hsgs art club",
+                    "description": "Thành viên ban Mĩ Thuật. Thiết kế 50% tất cả các ấn phẩm truyền thông trực quan, bao gồm in ấn và bài đăng trên mạng xã hội. Đóng góp trong các cuộc họp câu lạc bộ thường xuyên và các sự kiện chính.",
                     "images": ["1.PNG", "2.PNG", "3.PNG"],
                     "id": 4
                 }
@@ -105,6 +111,7 @@
                     <div class="img-scroller">
                         ${getImages(projects[i])}
                     </div>
+                    <div class="note">scroll on images</div>
                     <h4>${projects[i]["title"]}</h4>
                     <p>${projects[i]["description"]}</p>
                 </div>

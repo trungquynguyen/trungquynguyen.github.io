@@ -487,3 +487,9 @@ main.music {
     font-size: 12px;
 }
 
+.note {
+    font-size: 10px;
+    color:#565656;
+    text-align: center;
+    padding-top: 5px;
+}
