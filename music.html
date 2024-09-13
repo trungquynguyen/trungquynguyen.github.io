@@ -21,11 +21,21 @@
             <a href="index.html">TRUNG</a>
         </header>
 
-        <main class="designer">
-            ignore
+        <main class="music">
+            <h2>Tôi Thích Nhạc</h2>
+            <img id="img-music-cover" src="img-music/Untitled_Artwork 1.png" class="">
+            <div class="ttn">
+                <div class="ttn-scroller">
+                    <img id="img-music-1" src="img-music/IMG_1016.PNG" class="img-music">
+                    <img id="img-music-2" src="img-music/IMG_1018.PNG" class="img-music">
+                    <img id="img-music-3" src="img-music/IMG_1021.PNG" class="img-music">
+                    <img id="img-music-4" src="img-music/IMG_1022.PNG" class="img-music">
+                </div>
+                <p id="ttn-desc" ><a class="italic">Tôi Thích Nhạc</a> là một blog cá nhân viết cảm nhận về những âm nhạc mình nghe. Tôi Thích Nhạc có mục tiêu là xây dựng sân khấu để giới thiệu cho cộng đồng những nghệ sĩ Việt Nam ít người biết tới hơn. </p>
+            </div>
         </main>
         <footer>
-            <section id="about">
+            <section id="about" >
                 <h2>ABOUT ME</h2>
                 <p class="about">Chào, mình là Nguyễn Quý Trung, hiện tại là tân sinh viên HUST, Vietnam</p>
                 <p class="about">Mình là một sinh viên làm những việc của sinh viên. Mình muốn mọi người nghĩ tới bản thân và những sản phẩm của mình là thể nghiệm và nghệ thuật.</p>
@@ -51,6 +61,24 @@
                 let speed = event.deltaY / 4;
                 scroller.scrollTop += speed;
             });
+
+            var imgs = document.querySelectorAll(".img-music");
+            var i = 0;
+            window.addEventListener("load", () => {
+                window.scrollTop = 0;
+            })
+
+            window.addEventListener("wheel", (event) => {
+                
+                let speed = event.deltaY;
+                
+                if (speed > 0) {
+                    imgs[i].style.opacity = 1;
+                    i++;
+                }
+            });
+            
+            
             
         </script>
     </body>
