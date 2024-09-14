@@ -286,6 +286,7 @@ main.designer {
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     width: 50vw;
+    
     height: 80vh;
     scrollbar-width: none;
 }
@@ -332,6 +333,7 @@ div.current > a {
 div.designer {
     margin: 0 auto;
     width: 50vw;
+    
     padding: 5vh 2vw 0 2vw;
     scroll-snap-align: center;
 }
