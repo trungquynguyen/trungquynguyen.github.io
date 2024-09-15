@@ -54,10 +54,14 @@ header {
     width: 100vw;
     background-image: linear-gradient(black 5%, transparent 85%);
     z-index: 1;
-    padding: 10px 40px 0 0;
+    padding: 0 40px 0 0;
     height: 20vh;
     scroll-snap-align: center;
+    
+}
 
+header.nosnap {
+    scroll-snap-align: none;
 }
 
 header.index {
@@ -167,6 +171,7 @@ section {
 .scroller {
     font-size: 13px;
     max-width: 50vw;
+    min-width: 200px;
     display: flex;
     flex-direction: column;
     height: 50px;
@@ -198,7 +203,7 @@ section {
 }
 
 .sub {
-    padding: 40px 0 0 10px;
+    padding: 50px 10px 0 10px;
     white-space: nowrap;
     overflow-x:hidden;
 }
@@ -211,7 +216,9 @@ section {
     font-size: 13px;
 }
 
-
+a.sub {
+    padding-top: 10px;
+}
 
 .grainy-radient {
     width: 70rem;
@@ -433,6 +440,7 @@ img.formated-photos:last-of-type {
 
 main.music {
     padding: 10rem 0 10rem 3rem;
+    
 }
 
 .img-music {
@@ -502,4 +510,43 @@ main.music {
     color:#565656;
     text-align: center;
     padding-top: 5px;
+}
+
+.note.about {
+    width: 7%;
+    margin-left: 5%;
+}
+
+.gray-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000d3;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    z-index: 8;
+}
+
+.img-big {
+    object-fit:contain;
+    width: 80%;
+    height: 80%;
+    z-index: 9;
+    margin: auto;
+}
+
+.close {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    
+    z-index: 10;
+    color: white;
+}
+
+.active-page {
+    background: linear-gradient(0deg, transparent 97%, rgb(255, 255, 255) 98%, rgb(255, 255, 255) 100%)
+
 }

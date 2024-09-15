@@ -35,14 +35,15 @@
             <section id="links">
                 <h3>CONNECT WITH ME</h3>
                 <div class="scroller">
-                    <a href="https://www.facebook.com/quytrung.ng/">Facebook</a>
-                    <a href="https://www.instagram.com/quytrungng/">Instagram</a>
-                    <a href="https://www.threads.net/@quytrungng?xmt=AQGziV7o9lo8u_mfZRsoz-wxQ9idCvHNC_1vNbPrFQyf3D8">Threads</a>
-                    <a href="https://github.com/trungquynguyen">GitHub</a>
-                    <a href="https://www.linkedin.com/in/trung-nguyen-87bbb72b2/">LinkedIn</a>
-                    <a href="https://www.facebook.com/toithichnhac">Blog</a>
+                    <a target="_blank" href="https://www.facebook.com/quytrung.ng/">Facebook</a>
+                    <a target="_blank" href="https://www.instagram.com/quytrungng/">Instagram</a>
+                    <a target="_blank" href="https://www.threads.net/@quytrungng?xmt=AQGziV7o9lo8u_mfZRsoz-wxQ9idCvHNC_1vNbPrFQyf3D8">Threads</a>
+                    <a target="_blank" href="https://github.com/trungquynguyen">GitHub</a>
+                    <a target="_blank" href="https://www.linkedin.com/in/trung-nguyen-87bbb72b2/">LinkedIn</a>
+                    <a target="_blank" href="https://www.facebook.com/toithichnhac">Blog</a>
                     <span>quytrung2406@gmail.com</span>
                     </div>
+                    <div class="note about">scroll</div>
                 </section>
             </footer>
         <script>
@@ -58,8 +59,35 @@
             // fancy grainy gradient fade in using contrast.
             const menuItems = document.querySelectorAll('.nopadding');
             var graindient = document.querySelector('#grainy-radient');
+            
+            window.addEventListener("load", () => {
+                linkScroll()
+            })
+            function linkScroll() {
+                let direction = 1;
+                let currentLink = 0;
+                let isScrolling = true;
 
+                scroller.addEventListener("mouseover", () => {
+                    isScrolling = false;
+                });
 
+                scroller.addEventListener("mouseout", () => {
+                    isScrolling = true;
+                });
+
+                const scrollInterval = setInterval(() => {
+                    if (isScrolling) {
+                    scroller.scrollBy(0, 20 * direction);
+                    currentLink += direction;
+
+                    if (currentLink >= 7|| currentLink <= 0) {
+                        
+                        direction *= -1;
+                    }
+                    }
+                }, 1000); 
+            }
 
         </script>
     </body>

@@ -15,10 +15,10 @@
     <body>
         <header>
             <div class="nopadding sub"><a href="#about">About Me</a></div>
-            <div class="nopadding sub current"><a href="designer.html">Projects</a></div>
+            <div class="nopadding sub current active-page"><a href="designer.html">Projects</a></div>
             <div class="nopadding sub"><a href="music.html">Music-blog</a></div>
             <div class="nopadding sub"><a href="photos.html">Photos Collection</a></div>
-            <a href="index.html">TRUNG</a>
+            <a href="index.html" class="sub">TRUNG</a>
         </header>
 
         <main class="designer">
@@ -39,14 +39,15 @@
             <section id="links">
                 <h3>CONNECT WITH ME</h3>
                 <div class="scroller">
-                    <a href="https://www.facebook.com/quytrung.ng/">Facebook</a>
-                    <a href="https://www.instagram.com/quytrungng/">Instagram</a>
-                    <a href="https://www.threads.net/@quytrungng?xmt=AQGziV7o9lo8u_mfZRsoz-wxQ9idCvHNC_1vNbPrFQyf3D8">Threads</a>
-                    <a href="https://github.com/trungquynguyen">GitHub</a>
-                    <a href="https://www.linkedin.com/in/trung-nguyen-87bbb72b2/">LinkedIn</a>
-                    <a href="https://www.facebook.com/toithichnhac">Blog</a>
+                    <a target="_blank" href="https://www.facebook.com/quytrung.ng/">Facebook</a>
+                    <a target="_blank" href="https://www.instagram.com/quytrungng/">Instagram</a>
+                    <a target="_blank" href="https://www.threads.net/@quytrungng?xmt=AQGziV7o9lo8u_mfZRsoz-wxQ9idCvHNC_1vNbPrFQyf3D8">Threads</a>
+                    <a target="_blank" href="https://github.com/trungquynguyen">GitHub</a>
+                    <a target="_blank" href="https://www.linkedin.com/in/trung-nguyen-87bbb72b2/">LinkedIn</a>
+                    <a target="_blank" href="https://www.facebook.com/toithichnhac">Blog</a>
                     <span>quytrung2406@gmail.com</span>
                     </div>
+                    <div class="note about">scroll</div>
                 </section>
             </footer>
         <script>
@@ -122,20 +123,54 @@
                 `
             };
 
-            const imagescroller = document.querySelectorAll("div.img-scroller");
+
+
+            var imagescroller = document.querySelectorAll("div.img-scroller");
             var width = mainDesigner.getBoundingClientRect()["width"];
 
-            for (let i = 0; i < imagescroller.length; i++) {
+            function scrollImg() {
+                for (let i = 0; i < imagescroller.length; i++) {
                 imagescroller[i].addEventListener("wheel", (event) => {
+                    width = mainDesigner.getBoundingClientRect()["width"];
                     event.preventDefault();
-                    let speed = event.deltaY * (width/100);
+                    let speed = event.deltaY * (width/150);
                     imagescroller[i].scrollLeft += speed;
             });
             };
+            } 
+
+            function zoom() {
+                for (let i = 0; i < imagescroller.length; i++) {
+                imagescroller[i].addEventListener("click", (event) => {
+                    if (event.target.tagName.toLowerCase() === 'img') {
+                        const imgSource = event.target.getAttribute("src");
+                        mainDesigner.innerHTML += `
+                            <div class="gray-screen">
+                              <img class="img-big" src=${imgSource}>
+                              <svg onclick="closeImg(event)" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x close" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                              </svg>
+                            </div>
+                        `;
+                        }
+                })
+            }
+            }
+            scrollImg();
+            zoom();
+
+                function closeImg(event) {
+                    event.target.closest(".gray-screen").remove();
+                    imagescroller = document.querySelectorAll("div.img-scroller");
+                    
+                    zoom()
+                    scrollImg()
+                }
 
             var dots = document.querySelectorAll("div.dot");
             const leftArrow = document.querySelector("i.bi-chevron-compact-left");
             const rightArrow = document.querySelector("i.bi-chevron-compact-right");
+
 
 
             function lightUp() {
@@ -171,6 +206,40 @@
                 lightUp();
             })
             mainDesigner.addEventListener("scroll", lightUp);
+            
+
+            window.addEventListener("load", () => {
+                linkScroll()
+            })
+            function linkScroll() {
+                let direction = 1;
+                let currentLink = 0;
+                let isScrolling = true;
+
+                scroller.addEventListener("mouseover", () => {
+                    isScrolling = false;
+                });
+
+                scroller.addEventListener("mouseout", () => {
+                    isScrolling = true;
+                });
+
+                const scrollInterval = setInterval(() => {
+                    if (isScrolling) {
+                    scroller.scrollBy(0, 20 * direction);
+                    currentLink += direction;
+
+                    if (currentLink >= 7|| currentLink <= 0) {
+                        
+                        direction *= -1;
+                    }
+                    }
+                }, 1000); 
+            }
+
+
+
+
         </script>
     </body>
 </html>

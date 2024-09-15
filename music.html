@@ -13,12 +13,12 @@
         <title>My Webpage</title>
     </head>
     <body>
-        <header>
+        <header class="nosnap">
             <div class="nopadding sub"><a href="#about">About Me</a></div>
             <div class="nopadding sub"><a href="designer.html">Projects</a></div>
-            <div class="nopadding sub current"><a href="music.html">Music-blog</a></div>
+            <div class="nopadding sub current active-page"><a href="music.html">Music-blog</a></div>
             <div class="nopadding sub"><a href="photos.html">Photos Collection</a></div>
-            <a href="index.html">TRUNG</a>
+            <a href="index.html" class="sub">TRUNG</a>
         </header>
 
         <main class="music">
@@ -44,14 +44,15 @@
             <section id="links">
                 <h3>CONNECT WITH ME</h3>
                 <div class="scroller">
-                    <a href="https://www.facebook.com/quytrung.ng/">Facebook</a>
-                    <a href="https://www.instagram.com/quytrungng/">Instagram</a>
-                    <a href="https://www.threads.net/@quytrungng?xmt=AQGziV7o9lo8u_mfZRsoz-wxQ9idCvHNC_1vNbPrFQyf3D8">Threads</a>
-                    <a href="https://github.com/trungquynguyen">GitHub</a>
-                    <a href="https://www.linkedin.com/in/trung-nguyen-87bbb72b2/">LinkedIn</a>
-                    <a href="https://www.facebook.com/toithichnhac">Blog</a>
+                    <a target="_blank" href="https://www.facebook.com/quytrung.ng/">Facebook</a>
+                    <a target="_blank" href="https://www.instagram.com/quytrungng/">Instagram</a>
+                    <a target="_blank" href="https://www.threads.net/@quytrungng?xmt=AQGziV7o9lo8u_mfZRsoz-wxQ9idCvHNC_1vNbPrFQyf3D8">Threads</a>
+                    <a target="_blank" href="https://github.com/trungquynguyen">GitHub</a>
+                    <a target="_blank" href="https://www.linkedin.com/in/trung-nguyen-87bbb72b2/">LinkedIn</a>
+                    <a target="_blank" href="https://www.facebook.com/toithichnhac">Blog</a>
                     <span>quytrung2406@gmail.com</span>
                     </div>
+                    <div class="note about">scroll</div>
                 </section>
             </footer>
         <script>
@@ -64,22 +65,52 @@
             });
 
             var imgs = document.querySelectorAll(".img-music");
-            var i = 0;
+            let i = 0;
             window.addEventListener("load", () => {
                 window.scrollTop = 0;
+                linkScroll();
             })
 
             window.addEventListener("wheel", (event) => {
                 
                 let speed = event.deltaY;
                 
-                if (speed > 0) {
-                    imgs[i].style.opacity = 1;
+                if (speed > 0 && i <= 3 ) {
+                    imgs[i + 1].style.opacity = 1;
                     i++;
+                } else if (speed < 0 && i > 0) {
+                    imgs[i].style.opacity = 0;
+                    i--;
                 }
+
+                
             });
             
-            
+            function linkScroll() {
+                let direction = 1;
+                let currentLink = 0;
+                let isScrolling = true;
+
+                scroller.addEventListener("mouseover", () => {
+                    isScrolling = false;
+                });
+
+                scroller.addEventListener("mouseout", () => {
+                    isScrolling = true;
+                });
+
+                const scrollInterval = setInterval(() => {
+                    if (isScrolling) {
+                    scroller.scrollBy(0, 20 * direction);
+                    currentLink += direction;
+
+                    if (currentLink >= 7|| currentLink <= 0) {
+                        
+                        direction *= -1;
+                    }
+                    }
+                }, 1000); 
+            }
             
         </script>
     </body>
