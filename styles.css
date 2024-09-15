@@ -423,6 +423,14 @@ img.formated-photos {
 
 }
 
+img.formated-photos:nth-child(1) {
+    padding-left: 10%;
+}
+
+img.formated-photos:last-of-type {
+    padding-right: 30%;
+}
+
 main.music {
     padding: 10rem 0 10rem 3rem;
 }
